@@ -1,0 +1,4 @@
+/venv
+/email-summarization
+*.pyc
+settings.cfg

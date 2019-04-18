@@ -7,11 +7,7 @@ import numpy as np
 import networkx as nx
 import paralleldots
 
-file = open("settings.cfg")
-filedata = file.readlines()
-print(filedata[0])
-API_KEY = ""
-paralleldots.set_api_key("***************************************")
+paralleldots.set_api_key("OGNYZsxjhVpVkXqGUGRzp2abSXqk1uFt3upfaVUpZnU")
 
 category = { 
     "finance": [ "markets", "economy", "shares" ], 
@@ -23,18 +19,28 @@ category = {
 
 # import matplotlib.pyplot as plt
  
-def read_article(file_name):
-    file = open(file_name, "r")
-    filedata = file.readlines()
-    article = filedata[0].split(". ")
+# def read_article(file_name):
+#     file = open(file_name, "r")
+#     filedata = file.readlines()
+#     article = filedata[0].split(". ")
+#     sentences = []
+
+#     for sentence in article:
+#         # print(sentence)
+#         sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
+#     sentences.pop() 
+    
+#     return sentences
+
+def read_article(text):
+    article = text.split(". ")
     sentences = []
 
     for sentence in article:
         # print(sentence)
         sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
-    sentences.pop() 
-    
     return sentences
+
 
 def sentence_similarity(sent1, sent2, stopwords=None):
     if stopwords is None:
@@ -89,22 +95,18 @@ def generate_summary(file_name, top_n=5):
     # nx.draw(sentence_similarity_graph)
     # plt.subplot(122)
     scores = nx.pagerank(sentence_similarity_graph)
-    print(scores)
+    # print(scores)
     # Step 4 - Sort the rank and pick top sentences
     ranked_sentence = sorted(((scores[i],s) for i,s in enumerate(sentences)), reverse=True)    
-    print("Indexes of top ranked_sentence order are ", ranked_sentence)    
+    # print("Indexes of top ranked_sentence order are ", ranked_sentence)    
 
     for i in range(top_n):
       summarize_text.append(" ".join(ranked_sentence[i][1]))
 
     # Step 5 - Offcourse, output the summarize texr
-    print("Summarize Text: \n", ". ".join(summarize_text))
+    final_text = ""
+    final_text += ". ".join(summarize_text)
+    return final_text
 
 # let's begin
-generate_summary( "msft.txt", 2)
-
-file = open("msft.txt", "r")
-filedata = file.readlines()
-text = filedata[0]
-response=paralleldots.custom_classifier(text,category)
-print(response)
+# generate_summary( "msft.txt", 2)

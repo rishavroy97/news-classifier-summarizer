@@ -2,3 +2,6 @@
 /email-summarization
 *.pyc
 settings.cfg
+/__pycache__
+bot.py
+news_list.pkl

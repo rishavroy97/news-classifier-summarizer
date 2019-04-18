@@ -92,7 +92,7 @@ text=[
 
 import paralleldots
 
-paralleldots.set_api_key("OGNYZsxjhVpVkXqGUGRzp2abSXqk1uFt3upfaVUpZnU")
+paralleldots.set_api_key("**************************************")
 
 category = { 
     "finance": [ "markets", "economy", "shares" ], 

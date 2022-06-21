@@ -8,7 +8,7 @@ future==0.17.1
 idna==2.8
 networkx==2.3
 nltk==3.4
-numpy==1.16.2
+numpy==1.22.0
 ParallelDots==3.2.12
 pycparser==2.19
 python-telegram-bot==11.1.0
